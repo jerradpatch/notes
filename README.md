@@ -1,5 +1,5 @@
 # notes
-random collection of best java-script programming practices learned from experience
+random collection of best programming practices learned from experience. Mostly related to javascript.
 
 
 # MVC
@@ -10,3 +10,6 @@ random collection of best java-script programming practices learned from experie
 
 ## Middle Layer
 - 1 Return complete models to the cilents (assemeled destructured models). Why? 1) request efficentcy thus reduction in over all wait times, 2) reduction of model assembling logic on the front end.     
+
+## Typescript
+- Always destructure all incoming objects to to a component to the point that the component uses that input. Ie, dont reference a type imported from another class as this class does not change its usage of the type relative to the other class. Importing types leads to less reusibility of code and causes refactoring as the object changes, or causes the imported object to be purpose overloaded.
