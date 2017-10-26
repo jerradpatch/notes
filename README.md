@@ -14,6 +14,9 @@ random collection of best programming practices learned from experience. Mostly 
 ## Typescript
 - Always destructure all incoming objects to to a component to the point that the component uses that input. Ie, dont reference a type imported from another class as this class does not change its usage of the type relative to the other class. Importing types leads to less reusibility of code and causes refactoring as the object changes, or causes the imported object to be purpose overloaded.
 
+### Functions
+- Always put varibles that default to falsy at the end of the function, so that they maybe undefined/not-given when desired to be false.
+
 
 ## Angular ^2.x.x
 When writing controller functions make a function that returns a value and then a function that emits based on the returned value. B/c somtimes it is good to emit a value and other times the controller function maybe used directly via @ViewChild/ren
