@@ -17,6 +17,7 @@ random collection of best programming practices learned from experience. Mostly 
 ### Functions
 - Always put varibles that default to falsy at the end of the function, so that they maybe undefined/not-given when desired to be false.
 - Keep functions that have side-efects / modify external space to a minimum: increases code reusibility.
+- always use temp-varibles to store the results of function calls in parent functions, makes debugging easier.
 
 ## Angular ^2.x.x
 - When writing controller functions make a function that returns a value and then a function that emits based on the returned value. B/c somtimes it is good to emit a value and other times the controller function maybe used directly via @ViewChild/ren
