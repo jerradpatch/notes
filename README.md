@@ -16,7 +16,12 @@ random collection of best programming practices learned from experience. Mostly 
 
 ### Functions
 - Always put varibles that default to falsy at the end of the function, so that they maybe undefined/not-given when desired to be false.
-
+- Keep functions that have side-efects / modify external space to a minimum: increases code reusibility.
 
 ## Angular ^2.x.x
-When writing controller functions make a function that returns a value and then a function that emits based on the returned value. B/c somtimes it is good to emit a value and other times the controller function maybe used directly via @ViewChild/ren
+- When writing controller functions make a function that returns a value and then a function that emits based on the returned value. B/c somtimes it is good to emit a value and other times the controller function maybe used directly via @ViewChild/ren
+- Instead of using "@input set function" use the changes life cycle: 1) frees the thread to process the remaining change cycle, 2) if an output is needed to be emitted, it can be emitted without need to force a change detection event.
+
+## RxJs 
+- Dont use anonamous functions when chaining stream manipulations: 1) add to ability to debug and understand preformance issues, 2) adds to the readibility of the code.
+
