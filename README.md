@@ -19,6 +19,7 @@ random collection of best programming practices learned from experience. Mostly 
 - Keep functions that have side-efects / modify external space to a minimum: increases code reusibility.
 - Always use temp-varibles to store the results of function calls in parent functions, makes debugging easier.
 - Prefix Objects with the with conceptual usage type: MEpisode = Model Episode, IMoney = interface money, SData = service data; this makes it easily understood what the use case of the object is in code without having to look it up (read it's code). M=model, C=component, I=interface, S=service.
+- boolean values always default to false.
 
 ## Angular ^2.x.x
 - When writing controller functions make a function that returns a value and then a function that emits based on the returned value. B/c somtimes it is good to emit a value and other times the controller function maybe used directly via @ViewChild/ren
