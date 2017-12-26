@@ -8,6 +8,8 @@ random collection of best programming practices learned from experience. Mostly 
 
 - 2 Never use rxjs-subscriptions in a model that subscribe to data upon creation. For instance when trying to put together a destructured model. Why? Because the model maybe disposed of before the subscription's return value is ever needed.
 
+- 3 When transforming data in an object, either do it in place or delete the original data key after the transformation is complete. B/c, adding keys to an object makes it difficult to know what data/keys can be relied upon as the object proceeds through stages of the application.
+
 ## Middle Layer
 - 1 Return complete models to the cilents (assemeled destructured models). Why? 1) request efficentcy thus reduction in over all wait times, 2) reduction of model assembling logic on the front end.     
 
