@@ -23,6 +23,9 @@ random collection of best programming practices learned from experience. Mostly 
 - Prefix Objects with the with conceptual usage type: MEpisode = Model Episode, IMoney = interface money, SData = service data; this makes it easily understood what the use case of the object is in code without having to look it up (read it's code). M=model, C=component, I=interface, S=service.
 - boolean values always default to false.
 
+### JSON
+- All boolean values should logically default to false, key names should reflect this. So, a key doesn't need to be defined to be set correctly.
+
 ## Angular ^2.x.x
 - When writing controller functions make a function that returns a value and then a function that emits based on the returned value. B/c somtimes it is good to emit a value and other times the controller function maybe used directly via @ViewChild/ren
 - Instead of using "@input set function" use the changes life cycle: 1) frees the thread to process the remaining change cycle, 2) if an output is needed to be emitted, it can be emitted without need to force a change detection event.
