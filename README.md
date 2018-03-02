@@ -22,6 +22,7 @@ random collection of best programming practices learned from experience. Mostly 
 - Always use temp-varibles to store the results of function calls in parent functions, makes debugging easier.
 - Prefix Objects with the with conceptual usage type: MEpisode = Model Episode, IMoney = interface money, SData = service data; this makes it easily understood what the use case of the object is in code without having to look it up (read it's code). M=model, C=component, I=interface, S=service.
 - boolean values always default to false.
+- IF statements - should always have an 'else' clause when setting parameters outside the scope (side effects), regardless of domain knowledge.
 
 ### JSON
 - All boolean values should logically default to false, key names should reflect this. So, a key doesn't need to be defined to be set correctly.
