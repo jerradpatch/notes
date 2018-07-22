@@ -36,3 +36,10 @@ random collection of best programming practices learned from experience. Mostly 
 ## RxJs 
 - Dont use anonamous functions when chaining stream manipulations: 1) add to ability to debug and understand preformance issues, 2) adds to the readibility of the code.
 
+## Rest Endpoints
+### Client Considerations:
+1) timeout is always needed
+2) what to do when failure occurs
+3) consider it was a 200 yet was a failure
+
+
