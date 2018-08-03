@@ -41,6 +41,6 @@ random collection of best programming practices learned from experience. Mostly 
 1) timeout is always needed
 2) what to do when failure occurs
 3) consider it was a 200 yet was a failure
-4) additional things: retying failed requests, caching reponses from resources without cache headers, validation, normalizing remote models to local models key/values.
+4) additional things: retying failed requests, caching reponses from resources without cache headers, validation, normalizing remote models to local models key/values, page objects to pull data from pages, tests to make sure page objects continue to pull expected data.
 
 
