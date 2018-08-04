@@ -13,6 +13,48 @@ random collection of best programming practices learned from experience. Mostly 
 - 3 When transforming data in an object, either do it in place or delete the original data key after the transformation is complete. B/c, adding keys to an object makes it difficult to know what data/keys can be relied upon as the object proceeds through stages of the application.
 ### concept: Many Models One Wrapper, WIP
 - A database may hold may different models with many different keys and values. However, in the client side models are applied to components, and components are reusible pieces of code that are used in multiple places in an application: styled lists, cards in a list box. Many components are tied to a specific api and thus model, however each component can have many common things with other components with the model being the only difference. If there was one model wrapper that normalized all the keys for the components use many components can be reused or expanded to encompass more functionality (gettes / seters). In addition, all key transformation logic, that would normally happen in the component, could be isolated to the model. Isolating transformation logic to the model reduces transformation logic across the entire application. Thus, every component has an interface, that is applied in the wrapper of every model that comes back from the api.
+#### Application:
+```typescript
+let modA: {title: string, occurrence: number, language: string, imageUrl: string, videoUrl: string}
+let modB: {place: string, location: {long: number, lat: number}, imageUrls: string[]}
+
+class OneModelExample {
+  //pseudo code,
+  // **note the data from the database in not modified.
+  _data = {
+    title: string, occurrence: number, language: string, videoUrl: string,
+    place: string, location: {long: number, lat: number}, imageUrls: string[]
+  }
+  
+  get title(): string {
+    return this._data.title || this._data.place;
+  }
+  
+  get imageUrls(): any[] {
+    return this._data.imageUrl && [this._data.imageUrl] || this._data.imageUrls || [];
+  }
+  
+  get videoUrls(): any[] {
+    return this._data.videoUrl && [this._data.videoUrl] || [];
+  }
+  
+  get occurrence(): number {
+    return this._data.occurrence;
+  }
+}
+
+//any component interface
+interface ComponentA {
+  title: string,
+  imageUrls: string[]
+}
+interface ComponentB {
+  title: string,
+  imageUrls: string[],
+  videoUrls: string[]
+}[]
+```
+In the example above, all transformation logic has been located to a single place for all models from the database. All components have a normalized interface that can be expanded by using more normalized keys. Note, no transformations were preformed to modify the original data, because this may change the actual meaning of the key in the database. For instance if we modified a 'seriesTitle' to just 'title' we have lost the meaning and the value can no longer be identified as a 'seriesTitle'.
 
 ## Middle Layer
 - 1 Return complete models to the cilents (assemeled destructured models). Why? 1) request efficentcy thus reduction in over all wait times, 2) reduction of model assembling logic on the front end.     
