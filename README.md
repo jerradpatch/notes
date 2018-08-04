@@ -2,6 +2,7 @@
 random collection of best programming practices learned from experience. Mostly related to javascript.
 
 
+
 # MVC
 ## Models
 - 1 Never add data to a DB model via a componenet / or add it in a well known sub-object. Why? Because a key could be added to the DB model who's value has a different purpose than used on the client. Perhaps its best to make the sub-object non-enumerible and fetched via a well function that was the object dbObject/model always remains serializible.
@@ -13,7 +14,12 @@ random collection of best programming practices learned from experience. Mostly 
 
 ## Middle Layer
 - 1 Return complete models to the cilents (assemeled destructured models). Why? 1) request efficentcy thus reduction in over all wait times, 2) reduction of model assembling logic on the front end.     
-
+### Architecture
+#### Multiplue Databases / Same Models:
+  1) models in every collection should have a key or key combination that uniquly identifies that model, egardless of what database it is in. This reduces transformation code and starts establishing a standard model key set.
+  2) models should inherit distinction keys from parent models. Ex: a series has episodes, what makes a series distinct is 'seriesTitle:string, season:number, seriesType: string' = "'this dog', 2, 'series'". A episode in that series will look like 'seriesTitle:string, season:number, seriesType: string, episodeTitle: string, occurrence: number' 
+  = "'this dog', 2, 'series', 'the dog goes to market', 1". While, duplication will occur the it is unlikly that keys used as an id for a model will ever change as long as the model exists. The benefit is that an member of the herarchy can be used to find other members without as second query and without any transformations. For example, if the series was desired and the current episode was given, the series could be found by doing a search on the series collection with the episode model, given that we only use the series distinction keys from the episode to search for the series. Inversly, the series could be used on the episode collection to find all episodes from that series. This can be taken further if each episode had image and video references (multiplue languages). We could use a series model to find all episodes models from the episode collection or all videos in every episode and all languages by using the series model in a search on the videos collection; or use a video model to find the series. All of this can be done without a single reference by simple establishing a common set of distinct keys for a given model across all databases.
+  
 ## Typescript
 - Always destructure all incoming objects to to a component to the point that the component uses that input. Ie, dont reference a type imported from another class as this class does not change its usage of the type relative to the other class. Importing types leads to less reusibility of code and causes refactoring as the object changes, or causes the imported object to be purpose overloaded.
 
