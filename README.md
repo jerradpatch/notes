@@ -93,7 +93,7 @@ In the example above, all transformation logic has been located to a single plac
 3) consider it was a 200 yet was a failure
 4) additional things: throttleing requests, retying failed requests, caching reponses from resources without cache headers, validation, normalizing remote models to local models key/values, page objects to pull data from pages, tests to make sure page objects continue to pull expected data.
 
-## Scraping data or data mining a website
+## Scraping data or data mining a website - WIP
 - all considerations of a rest endpoint need to be considered above
 - Consider a scrapped website to be a database where models are being returned based on a query. For example, filling out an episode or series model.
 - distinction keys can be used to make up the basis for queries in the database. In an episode for example, 
@@ -111,4 +111,8 @@ the above keys could be used to make a query to find all seasons = 2, or simply 
 1) get a listing of all models filled in the database with only the distinction key's values filled, or create a url using the query distinction keys.
 2) filter each model whoes distinctions keys do not match the query distinction keys
 3) go to the database and fill out each non-filter model with remaining non-distinction key data: episode title, summary...
+
+#### Architecture of scrapper - WIP
+1) each page has its own file
+2) in the file, each page has a page object, each page has 
 
